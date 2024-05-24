@@ -1,17 +1,17 @@
 "use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
-const CustomButton = () => {
-  return (
-    <button
-    disabled-={false}
-    type={"button"}
-    className={'custom-btn'}
-    onClick={() => {}}
-    >
+import CustomButtonProps from "@types";
 
-        <span className={`flex-1 ${textStyles}`}>{title}</span>
+const Button = ({ isDisabled, btnType, containerStyles, textStyles, title, rightIcon, handleClick }: CustomButtonProps) => (
+  <button
+    disabled={isDisabled}
+    type={btnType || "button"}
+    className={`custom-btn ${containerStyles}`}
+    onClick={handleClick}
+  >
+    <span className={`flex-1 ${textStyles}`}>{title}</span>
     {rightIcon && (
       <div className="relative w-6 h-6">
         <Image
@@ -23,8 +23,6 @@ const CustomButton = () => {
       </div>
     )}
   </button>
+);
 
-  )
-}
-
-export default CustomButton
+export default Button;
